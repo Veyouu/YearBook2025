@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEM 12-B BATCH 2024-2025</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #fff; /* Text color for contrast against dark background */
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    /* Background Styling */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0b132b, #1c2541, #3a506b);
+      z-index: -1;
+    }
+
+    /* Constellations */
+    .constellation {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    .star:nth-child(1) { top: 10%; left: 20%; }
+    .star:nth-child(2) { top: 25%; left: 50%; }
+    .star:nth-child(3) { top: 40%; left: 70%; }
+    .star:nth-child(4) { top: 60%; left: 30%; }
+    .star:nth-child(5) { top: 80%; left: 90%; }
+
+    @keyframes twinkle {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    /* Shooting Stars */
+    .shooting-star {
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(270deg, rgba(255, 255, 255, 0), white);
+      transform-origin: left;
+      animation: shoot 5s infinite ease-in-out;
+    }
+
+    .shooting-star:nth-child(1) {
+      top: 10%;
+      left: 0%;
+      animation-delay: 0s;
+    }
+
+    .shooting-star:nth-child(2) {
+      top: 30%;
+      left: 0%;
+      animation-delay: 2s;
+    }
+
+    .shooting-star:nth-child(3) {
+      top: 50%;
+      left: 0%;
+      animation-delay: 4s;
+    }
+
+    @keyframes shoot {
+      0% {
+        transform: rotate(45deg) translateX(-100vw);
+      }
+      100% {
+        transform: rotate(45deg) translateX(100vw);
+      }
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: linear-gradient(135deg, #3a506b, #1c2541);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #fff8dc;
+    }
+
+    nav ul li i {
+      margin-right: 5px;
+    }
+
+
+    /* School Banner */
+    .school-banner {
+      background: linear-gradient(135deg, #1a1a40, #000000);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .school-banner img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+      border: 3px solid white;
+      border-radius: 50%;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .school-banner h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-family: 'Merriweather', serif;
+    }
+
+    .school-banner .message {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      text-align: justify;
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, #0b132b, #1c2541, #3a506b);
+      color: white;
+      text-align: center;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center vertically */
+      align-items: center; /* Center horizontally */
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-style: italic;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Main Content */
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.student-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.student-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.student-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 2px solid #ff7eb3;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.student-card .info {
+  padding: 20px;
+  text-align: center;
+}
+
+.student-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+}
+
+.student-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.student-card .quote {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+    /* Male and Female Sections */
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #3a506b;
+      margin: 40px 0 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Footer Section */
+    footer {
+      background: #3a506b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      main {
+        gap: 20px;
+      }
+      .student-card {
+        width: 100%;
+      }
+    }
+
+    /* Teacher Section Styling */
+.teacher-section {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.teacher-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.teacher-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffeb3b; /* Contrasting yellow border */
+  animation: float 3s ease-in-out infinite;
+}
+
+.message-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify; /* Justify alignment */
+  line-height: 1.8;
+}
+
+.animated-text {
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  color: white;
+  animation: fadeInUp 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+    /* Class Officers Section Styling */
+.class-officers-section {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.officers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.officer-card {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  border-radius: 15px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.officer-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.officer-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #ffeb3b; /* Contrasting yellow border */
+  animation: float 3s ease-in-out infinite;
+}
+
+.officer-message h3 {
+  font-size: 1.2rem;
+  color: #ffeb3b; /* Contrasting yellow text */
+  margin-bottom: 10px;
+}
+
+.officer-message p {
+  font-size: 1rem;
+  color: white;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+    /* Sliding Pictures Styling */
+.sliding-pictures {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Place behind other content */
+  pointer-events: none; /* Ensure it doesn't block interactions */
+}
+
+.picture-track {
+  display: flex;
+  animation: scroll-images 20s linear infinite;
+}
+
+.picture-track img {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+  margin-right: 50px; /* Space between images */
+  opacity: 0.2; /* Make images semi-transparent */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for Endless Scrolling */
+@keyframes scroll-images {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move half the track to create an endless loop */
+  }
+}
+
+      @media (max-width: 768px) {
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+  </style>
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<body>
+  <!-- Constellations -->
+  <div class="constellation">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <!-- Shooting Stars -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <h1>STEM 12-B</h1>
+    <ul>
+      <li><a href="#male-section"><i class="fas fa-male"></i> Male Section</a></li>
+      <li><a href="#female-section"><i class="fas fa-female"></i> Female Section</a></li>
+      <li><a href="#class-pictures"><i class="fas fa-camera"></i> Class Pictures</a></li>
+      <li><a href="#timeline"><i class="fas fa-clock"></i> Timeline</a></li>
+    </ul>
+  </nav>
+
+  <!-- Audio Element for Background Music -->
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4iuAGPs5hlZqsKsS0ZnyWB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <h1>STEM 12-B</h1>
+    <ul>
+      <li><a href="#male"><i class="fas fa-male"></i> Male</a></li>
+      <li><a href="#female"><i class="fas fa-female"></i> Female</a></li>
+      <li><a href="#class-pictures"><i class="fas fa-camera"></i> Class Pictures</a></li>
+      <li><a href="#timeline"><i class="fas fa-clock"></i> Timeline</a></li>
+      <li><i class="fas fa-music music-icon" id="toggle-music"></i></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <!-- Semi-Transparent Contrasting Header Banner -->
+    <div class="header-banner"></div>
+    <h1>STEM 12-B BATCH 2024-2025</h1>
+    <p>Capturing Memories, Celebrating Achievements</p>
+  </header>
+
+
+  <!-- Teacher Section -->
+<section id="teacher-message" class="teacher-section">
+  <div class="teacher-card">
+    <!-- Teacher Picture Placeholder -->
+    <img src="pictures/Laarni.JPG" alt="Teacher Picture" class="teacher-picture">
+
+    <!-- Teacher Message -->
+    <div class="message-container">
+      <p class="animated-text">
+        Dear dearest STEM 12B,<br><br>
+        As I reflect on our time together, I am filled with immense gratitude and appreciation for each and every one of you. I feel truly fortunate to have had the opportunity to be your teacher and advisor. Your enthusiasm, kindness, and dedication to learning have made a lasting impact on me.<br><br>
+        I want to express my sincerest appreciation for all the efforts you've put into your studies, your projects, and our class activities. Your hard work, creativity, and perseverance have not gone unnoticed. I'm constantly amazed by your talents, insights, and passions.<br><br>
+        As you move forward to the next chapter of your life, I wish you all the very best. May you continue to grow, learn, and thrive. May you pursue your dreams with courage, resilience, and determination. And may you always remember the lessons we've shared, the laughter we've enjoyed, and the memories we've created together.<br><br>
+        You are capable, talented, and deserving of all the success and happiness the world has to offer. I have no doubt that each of you will make a positive impact in your own unique way.<br><br>
+        Thank you for being an incredible advisory class. Special thanks to Audrey and to the rest of the class officers for being good and responsible leaders... I'm honored to have been a part of your journey.<br><br>
+        Love you all guys.<br>
+        With love, appreciation, and best wishes,<br>
+        Ma'am Laarni
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Class Officers Section -->
+<section id="class-officers" class="class-officers-section">
+  <h2 class="section-title">Message from Class Officers</h2>
+  <div class="officers-container">
+    <!-- Audrey R. Cabuyao -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5473.JPG" alt="Audrey R. Cabuyao" class="officer-picture">
+      <div class="officer-message">
+        <h3>Audrey R. Cabuyao</h3>
+        <p> A genie in a bottle is not enough for I have 44 wishes.
+Congratulations to us gradu(w)waitings!</p>
+      </div>
+    </div>
+
+    <!-- Princess Rhain P. De la Cruz -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5472.JPG" alt="Princess Rhain P. De la Cruz" class="officer-picture">
+      <div class="officer-message">
+        <h3>Princess Rhain P. De la Cruz</h3>
+        <p>Stem B we've been classmates for 2 years and we all built an unbreakable bond.  Our little get together, inuman, iyakan, tawanan, will remain memorable for all of us. I didn't want grade 12 to end because it means hindi na tayo magsasama sa isang classroom, hindi na tayo mag rrant sa mga subjects, hindi na tayo magtatawanan ng sama sama. It's sad to say goodbye to this section cause I treasure it a lot.  Now that we will take another step forward I hope that we won't forget each other. A new chapter awaits us and I pray for all of our success.</p>
+      </div>
+    </div>
+
+    <!-- Samantha Javier -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5451.JPG" alt="Samantha Javier" class="officer-picture">
+      <div class="officer-message">
+        <h3>Samantha Javier</h3>
+        <p>Hi, STEM-B! I am very much honored to be your secretary, kahit na madalas sumisigaw ako at nagkakagulo sa room, know that I truly care for all of you and I am very proud of us on what we've achieved together, not only for the growth of each one of us but also as a whole class. I cherish you all and I'm hoping for the best. May life treat you well, and if not I hope you treat yourself well. See you when I see you again, STEM-B!</p>
+      </div>
+    </div>
+
+    <!-- Jervey P. Calusin -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5361.JPG" alt="Jervey P. Calusin" class="officer-picture">
+      <div class="officer-message">
+        <h3>Jervey P. Calusin</h3>
+        <p>As the treasurer, there's no day that I've been bugging you guys to pay up. Thank you for trusting me and Bea! I hope ya'll succeed in life! Hindi man tayo guys lahat close pero we still a family in heart, the presence of everyone is enough! Yev here, the treasurer that singils everyday, this role really made improve myself. I really don't like responsibilities but I would say being a treasurer is hard. Thank you guys for making my job easier!  </p>
+      </div>
+    </div>
+
+    <!-- Beatriz O. Ambe -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5438.JPG" alt="Beatriz O. Ambe" class="officer-picture">
+      <div class="officer-message">
+        <h3>Beatriz O. Ambe</h3>
+        <p> Thank you for trusting me and giving me wonderful memories. I wish sumakses tayong lahat sa buhay and witness every good thing together. I love y’all! See you soon STEM B</p>
+      </div>
+    </div>
+
+    <!-- Meiry Adrienne S. Oabel -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5463.JPG" alt="Meiry Adrienne S. Oabel" class="officer-picture">
+      <div class="officer-message">
+        <h3>Meiry Adrienne S. Oabel</h3>
+        <p>Our journey was never easy. It was full of surprises and challenges. Yet, we faced it together, cared for one another, and shared memories together. May the stars align with our chosen careers in the future and maintain a long lasting friendship. Padayon, STEM 12-B!</p>
+      </div>
+    </div>
+
+    <!-- Jansie M. Hadap -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5372.JPG" alt="Jansie M. Hadap" class="officer-picture">
+      <div class="officer-message">
+        <h3>Jansie M. Hadap</h3>
+        <p>No matter where life leads us, the memories and teachings we’ve experienced will remain with us always. Let’s make sure to keep in touch and support each other as we embark on our next adventures. Here’s to new beginnings and all the great things ahead!</p>
+      </div>
+    </div>
+
+    <!-- Dustin Dave S. Rea-->
+    <div class="officer-card">
+      <img src="pictures/0G8A5420.JPG" alt="Dustin Dave S. Rea" class="officer-picture">
+      <div class="officer-message">
+        <h3>Dustin Dave S. Rea</h3>
+        <p>hello guys! Thank you for bringing happiness into my life guys. Thank you for the fun memories, support, and the lesson we've shared. goodluck on our college journey and may we all succeed in life!
+</p>
+      </div>
+    </div>
+
+    <!-- Kylle R. Gabis -->
+    <div class="officer-card">
+      <img src="pictures/0G8A5477.JPG" alt="Kylle R. Gabis" class="officer-picture">
+      <div class="officer-message">
+        <h3>Kylle R. Gabis</h3>
+        <p> "Laban lang sa buhay as each of us deserves all the good things in life.Congratulations and Goodluck,  STEM-B!
+</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- School Banner -->
+  <div class="school-banner">
+    <img src="pictures/lpbanner.JPG" alt="School Logo">
+    <h2>Luis Palad Integrated High School</h2>
+    <p>
+      Luis Palad Integrated High School in Tayabas City, a School of Character, aims to develop Batang Paladian through relevant and quality education in accordance with existing statutory guidelines, regulatory requirements, and standard policies.
+    </p>
+    <p>
+      We commit to continuosly improve the quality management system and practice professionalism guided by transparent, ethical and accountable governance for stakeholders' satisfaction
+    </p>
+  </div>
+
+  <!-- Sliding Class Pictures -->
+<div class="sliding-pictures">
+  <div class="picture-track">
+    <img src="pictures/RECOG.JPG" alt="Class Picture 1">
+    <img src="pictures/LASTFRI.JPG" alt="Class Picture 2">
+    <img src="pictures/ILOG.JPG" alt="Class Picture 3">
+    <img src="pictures/KYLA.JPG" alt="Class Picture 4">
+    <img src="pictures/Baca.JPG" alt="Class Picture 5">
+    <img src="pictures/24.JPG" alt="Class Picture 6">
+    <img src="pictures/A.JPG" alt="Class Picture 7">
+    <img src="pictures/B.JPG" alt="Class Picture 8">
+    <img src="pictures/C.JPG" alt="Class Picture 9">
+    <img src="pictures/D.JPG" alt="Class Picture 10">
+    <img src="pictures/E.JPG" alt="Class Picture 1">
+    <img src="pictures/F.JPG" alt="Class Picture 2">
+    <img src="pictures/G.JPG" alt="Class Picture 3">
+    <img src="pictures/H.JPG" alt="Class Picture 4">
+    <img src="pictures/I.JPG" alt="Class Picture 5">
+    <img src="pictures/J.JPG" alt="Class Picture 6">
+    <img src="pictures/K.JPG" alt="Class Picture 7">
+    <img src="pictures/L.JPG" alt="Class Picture 8">
+    <img src="pictures/M.JPG" alt="Class Picture 9">
+    <img src="pictures/N.JPG" alt="Class Picture 10">
+    <img src="pictures/O.JPG" alt="Class Picture 1">
+    <img src="pictures/P.JPG" alt="Class Picture 2">
+    <img src="pictures/Q.JPG" alt="Class Picture 3">
+    <img src="pictures/R.JPG" alt="Class Picture 4">
+    <img src="pictures/S.JPG" alt="Class Picture 5">
+    <img src="pictures/T.JPG" alt="Class Picture 6">
+    <img src="pictures/U.JPG" alt="Class Picture 7">
+    <img src="pictures/V.JPG" alt="Class Picture 8">
+    <img src="pictures/W.JPG" alt="Class Picture 9">
+    <img src="pictures/X.JPG" alt="Class Picture 10">
+    <img src="pictures/Y.JPG" alt="Class Picture 1">
+    <img src="pictures/Z.JPG" alt="Class Picture 2">
+    <img src="pictures/AA.JPG" alt="Class Picture 3">
+    <img src="pictures/BB.JPG" alt="Class Picture 4">
+    <img src="pictures/CC.JPG" alt="Class Picture 5">
+    <img src="pictures/DD.JPG" alt="Class Picture 6">
+    <img src="pictures/EE.JPG" alt="Class Picture 7">
+    <img src="pictures/FF.JPG" alt="Class Picture 8">
+    <img src="pictures/GG.JPG" alt="Class Picture 9">
+    <img src="pictures/HH.JPG" alt="Class Picture 10">
+    <!-- Repeat the images to create an endless loop -->
+    <img src="pictures/RECOG.JPG" alt="Class Picture 1">
+    <img src="pictures/LASTFRI.JPG" alt="Class Picture 2">
+    <img src="pictures/ILOG.JPG" alt="Class Picture 3">
+    <img src="pictures/KYLA.JPG" alt="Class Picture 4">
+    <img src="pictures/Baca.JPG" alt="Class Picture 5">
+    <img src="pictures/24.JPG" alt="Class Picture 6">
+    <img src="pictures/A.JPG" alt="Class Picture 7">
+    <img src="pictures/B.JPG" alt="Class Picture 8">
+    <img src="pictures/C.JPG" alt="Class Picture 9">
+    <img src="pictures/D.JPG" alt="Class Picture 10">
+    <img src="pictures/E.JPG" alt="Class Picture 1">
+    <img src="pictures/F.JPG" alt="Class Picture 2">
+    <img src="pictures/G.JPG" alt="Class Picture 3">
+    <img src="pictures/H.JPG" alt="Class Picture 4">
+    <img src="pictures/I.JPG" alt="Class Picture 5">
+    <img src="pictures/J.JPG" alt="Class Picture 6">
+    <img src="pictures/K.JPG" alt="Class Picture 7">
+    <img src="pictures/L.JPG" alt="Class Picture 8">
+    <img src="pictures/M.JPG" alt="Class Picture 9">
+    <img src="pictures/N.JPG" alt="Class Picture 10">
+    <img src="pictures/O.JPG" alt="Class Picture 1">
+    <img src="pictures/P.JPG" alt="Class Picture 2">
+    <img src="pictures/Q.JPG" alt="Class Picture 3">
+    <img src="pictures/R.JPG" alt="Class Picture 4">
+    <img src="pictures/S.JPG" alt="Class Picture 5">
+    <img src="pictures/T.JPG" alt="Class Picture 6">
+    <img src="pictures/U.JPG" alt="Class Picture 7">
+    <img src="pictures/V.JPG" alt="Class Picture 8">
+    <img src="pictures/W.JPG" alt="Class Picture 9">
+    <img src="pictures/X.JPG" alt="Class Picture 10">
+    <img src="pictures/Y.JPG" alt="Class Picture 1">
+    <img src="pictures/Z.JPG" alt="Class Picture 2">
+    <img src="pictures/AA.JPG" alt="Class Picture 3">
+    <img src="pictures/BB.JPG" alt="Class Picture 4">
+    <img src="pictures/CC.JPG" alt="Class Picture 5">
+    <img src="pictures/DD.JPG" alt="Class Picture 6">
+    <img src="pictures/EE.JPG" alt="Class Picture 7">
+    <img src="pictures/FF.JPG" alt="Class Picture 8">
+    <img src="pictures/GG.JPG" alt="Class Picture 9">
+    <img src="pictures/HH.JPG" alt="Class Picture 10">
+  </div>
+</div>
+
+  <!-- Male Section -->
+  <div id="male" class="section-title">Male</div>
+  <main>
+    <!-- Male Students -->
+    <div class="student-card">
+      <img src="pictures/0G8A5364.JPG" alt="Renz Gideon D. Abulencia">
+      <div class="info">
+        <h2>Renz Gideon D. Abulencia</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"It's only under extreme pressure that the greatest diamonds are formed"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5387.JPG" alt="John Lloyd L. Arceta">
+      <div class="info">
+        <h2>John Lloyd L. Arceta</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Kahit anong pag subok o problema ang dumaan satin lagi mong tatandaan burger ka sa akin"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5361.JPG" alt="Jervey P. Calusin">
+      <div class="info">
+        <h2>Jervey P. Calusin</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"It is difficult to understand men, but still harder to know them thoroughly"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5359.JPG" alt="Rhaynier D. Dayahan">
+      <div class="info">
+        <h2>Rhaynier D. Dayahan</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Inspiration Unlocks the Future"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5366.JPG" alt="Andrei O. de Guzman">
+      <div class="info">
+        <h2>Andrei O. de Guzman</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Once you start to learn the L disappears"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5374.JPG" alt="Mark Ryan C. Eporac">
+      <div class="info">
+        <h2>Mark Ryan C. Eporac</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"A picture's worth a thousand words"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5372.JPG" alt="Jansie M. Hadap">
+      <div class="info">
+        <h2>Jansie M. Hadap</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">“Listen to your heart,not to people’s opinions “</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5407.JPG" alt="John Leobert G. Lada">
+      <div class="info">
+        <h2>John Leobert G. Lada</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Always remembrance step by the step is the key to success"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5400.JPG" alt="Sebastian Miguel I. Ladines">
+      <div class="info">
+        <h2>Sebastian Miguel I. Ladines</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"If you ever think of me, my wish is that it makes you smile"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5402.JPG" alt="John Marc D. Lagado">
+      <div class="info">
+        <h2>John Marc D. Lagado</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"It’s not the goodbye that hurts, but the flashbacks that follow"</p>
+      </div>
+</div>
+ <div class="student-card">
+  <img src="pictures/0G8A5378.JPG" alt="Student Name">
+  <div class="info">
+    <h2>Randolf Victor C. Leynes</h2>
+    <p>Class of 2024-2025</p>
+    <p class="quote">"I hope that the future of A.I won't rob me of my artistic and authentic nature"
+</p>
+  </div>
+
+</div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5411.JPG" alt="Exekiel D. Manungay">
+      <div class="info">
+        <h2>Exekiel D. Manungay</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Don't Stress. Do Your Best. Forget the Rest"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5408.JPG" alt="Brent Aaron N. Moreno">
+      <div class="info">
+        <h2>Brent Aaron N. Moreno</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Don't follow your dreams follow my instagram; brentaaronmoreno"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5414.JPG" alt="Allen Magno Obina">
+      <div class="info">
+        <h2>Allen Magno Obina</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"It always seems impossible until it's done"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5395.JPG" alt="Dustin Placino">
+      <div class="info">
+        <h2>Dustin Placino</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Now I'm not just a hot mess...I'm an educated hot mess"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5405.JPG" alt="Warren N. Quiliza">
+      <div class="info">
+        <h2>Warren N. Quiliza</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"The journey of a thousand miles begins with a single step"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5420.JPG" alt="Dustin Dave S. Rea">
+      <div class="info">
+        <h2>Dustin Dave S. Rea</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Don't judge a book. bye it's over!"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5429.JPG" alt="John Paul Benedict C. Reyes">
+      <div class="info">
+        <h2>John Paul Benedict C. Reyes</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Depende...."</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5419.JPG" alt="Rex Sairus C. Veleña">
+      <div class="info">
+        <h2>Rex Sairus C. Veleña</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Some of the best memories were made when I should’ve been studying and I should've gone for it"
+</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Female Section -->
+  <div id="female" class="section-title">Female</div>
+  <main>
+    <!-- Female Students -->
+    <div class="student-card">
+      <img src="pictures/0G8A5431.JPG" alt="Akisha Arianne C. Abrigo">
+      <div class="info">
+        <h2>Akisha Arianne C. Abrigo</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">“If tomorrow isn’t the due date, today isn’t the do date”
+</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5438.JPG" alt="Beatriz O. Ambe">
+      <div class="info">
+        <h2>Beatriz O. Ambe</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"The only thing I want around my neck is that silver medal 🤪"
+</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5440.JPG" alt="Nicole S. Blastique">
+      <div class="info">
+        <h2>Nicole S. Blastique</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Graduation is not the end; it's just the beginning of another chapter"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5461.JPG" alt="Kyla Benice M. Cabile">
+      <div class="info">
+        <h2>Kyla Benice M. Cabile</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Do it scared. Do it tired. Do it uncertain. JUST DO IT. NIKE"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5473.JPG" alt="Audrey R. Cabuyao">
+      <div class="info">
+        <h2>Audrey R. Cabuyao</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Never back down, never what?!"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5472.JPG" alt="Princess Rhain P. De la Cruz">
+      <div class="info">
+        <h2>Princess Rhain P. De la Cruz</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"We arrived as strangers, left as friends, and now move on as dreamers. Rhain, Stem B, future yours"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5441.JPG" alt="Ma. Angelica C. Ferrer">
+      <div class="info">
+        <h2>Ma. Angelica C. Ferrer</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Do your best in faith, and trust God to handle what’s beyond your control"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5477.JPG" alt="Kylle R. Gabis">
+      <div class="info">
+        <h2>Kylle R. Gabis</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"You only live once, so let go of the things you can't control. everything will fall into place one day"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5456.JPG" alt="Kathleen M. Gonzales">
+      <div class="info">
+        <h2>Kathleen M. Gonzales</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Buhay ay parang ML,  maraming trashtalkers"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5451.JPG" alt="Samantha S. Javier">
+      <div class="info">
+        <h2>Samantha S. Javier</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"The sail ends, the journey was worthwhile but life has yet to begin"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5446.JPG" alt="Altheiya Kriztel L. Lacorte">
+      <div class="info">
+        <h2>Altheiya Kriztel L. Lacorte</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"What feels like the end is often the beginning"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5479.JPG" alt="Kristine Nicole D. Lavado">
+      <div class="info">
+        <h2>Kristine Nicole D. Lavado</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"If it’s out of your hands, drop it. If it’s sleep, drop everything else. I’m off-duty, God’s got the night shift ☝🏻🛌🏻"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5484.JPG" alt="Vanessa A. Lavado">
+      <div class="info">
+        <h2>Vanessa A. Lavado</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Grow through what you go through"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5453.JPG" alt="Faith Lindsay A. Luna">
+      <div class="info">
+        <h2>Faith Lindsay A. Luna</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Believe you can and you're halfway they're"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5463.JPG" alt="Meiry Adrienne S. Oabel">
+      <div class="info">
+        <h2>Meiry Adrienne S. Oabel</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Live a fulfilled life to the fullest"
+</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5447.JPG" alt="Bianca Pauline P. Ragudo">
+      <div class="info">
+        <h2>Bianca Pauline P. Ragudo</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Good things happen to good people"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5468.JPG" alt="Eiza Grace B. Ramos">
+      <div class="info">
+        <h2>Eiza Grace B. Ramos</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"When you define success, you live it"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5488.JPG" alt="Mica Margareth M. Reyes">
+      <div class="info">
+        <h2>Mica Margareth M. Reyes</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"If u feel like your life is sinking, just group yourselves into 4"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5476.JPG" alt="Mishca Denise C. Tabi">
+      <div class="info">
+        <h2>Mishca Denise C. Tabi</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Nag habol man sa deadline, naka abot parin sa finish line"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5460.JPG" alt="Jan Ashley O. Tecson">
+      <div class="info">
+        <h2>Jan Ashley O. Tecson</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Today is an ending and a beginning. Ashley, Stem B, future nurse"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5465.JPG" alt="Jarah Mezerie B. Tolentino">
+      <div class="info">
+        <h2>Jarah Mezerie B. Tolentino</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"I came in quiet and unsure. I'm leaving loud and laughter, friends. and a version of myself I never knew I could grow into"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A5489.JPG" alt="Sarah Fae Glory S. Tutor">
+      <div class="info">
+        <h2>Sarah Fae Glory S. Tutor</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"I believe in the person I want to become"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A6849.JPG" alt="Sarah Mea L. Visalo">
+      <div class="info">
+        <h2>Sarah Mea L. Visalo</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Education is not filling of a pail, but the lighting of a fire"</p>
+      </div>
+    </div>
+    <div class="student-card">
+      <img src="pictures/0G8A7073.JPG" alt="Aena Carmelli B. Zita">
+      <div class="info">
+        <h2>Aena Carmelli B. Zita</h2>
+        <p>Class of 2024-2025</p>
+        <p class="quote">"Through heaven and earth, I alone am the honored one"</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Class Pictures Section -->
+<div id="class-pictures" class="section-title">Class Pictures</div>
+<main>
+  <div class="student-card">
+    <img src="pictures/24.JPG" alt="Group Photo">
+    <div class="info">
+      <h2>Graduation Picture</h2>
+      <p>Batch 2024-2025</p>
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/Reco.JPG" alt="Field Trip">
+    <div class="info">
+      <h2>Recollection</h2>
+      <p>The day we forgive, we learn and open!</p>
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/XMAS.JPG" alt="Prom Night">
+    <div class="info">
+      <h2>Year End Party</h2>
+      <p>A day no one will ever forget as we exchange gifts and messages</p>
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/12.JPG" alt="Sports Day">
+    <div class="info">
+      <h2>Graduation Ball</h2>
+      <p>A night that symbolizes all our hard work into a formal event! Everyone danced!</p>
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/Teachers.JPG" alt="Cultural Festival">
+    <div class="info">
+      <h2>Teachers Day</h2>
+      <p>Full of preparations and dedication for our beloved adviser! Thank you for appreciating our effort Ma'am Laarni!</p>
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/Baca.JPG" alt="Science Fair">
+    <div class="info">
+      <h2>Baccalaureate Mass </h2>
+      <p>April 11, 20225</p>
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/KYLA.JPG" alt="Graduation Rehearsal">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/ILOG.JPG" alt="Christmas Party">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/LASTFRI.JPG" alt="STEM Workshop">
+    <div class="info">
+      <h2>Last Friday</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/RECOG.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Grade-11 Recognition</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/G.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/F.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/H.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/I.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/J.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/K.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/L.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/28.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/M.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/N.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/O.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/P.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/Q.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/R.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/S.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/T.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/U.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/V.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/W.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/X.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/Y.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/Z.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+    </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/ZZ.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/AA.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/BB.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/CC.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/DD.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/EE.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/FF.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/GG.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/HH.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/II.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/JJ.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/KK.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/LL.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/MM.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/NN.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/OO.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/PP.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/QQ.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/AAA.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/BBB.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/CCC.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/DDD.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/EEE.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/FFF.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/GGG.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/HHH.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/III.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/JJJ.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/KKK.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/LLL.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/MMM.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/NNN.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/OOO.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/PPP.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/QQQ.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+        </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/SSS.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+        </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/TTT.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+      </div>
+  </div>
+  <div class="student-card">
+    <img src="pictures/RRR.JPG" alt="Yearbook Signing">
+    <div class="info">
+      <h2>Other Pictures</h2>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</main>
+
+
+
+    <!-- Repeat for other class pictures -->
+  </main>
+
+  <!-- Timeline Section -->
+  <div id="timeline" class="section-title">Timeline</div>
+  <main>
+    <div class="student-card">
+        <div class="info">
+      <iframe width="100%" height="250"src="https://www.youtube.com/embed/lZ2dVljPh9o?si=UQi1a2jiSnqg69gH" frameborder="0" allowfullscreen></iframe> alt="Opening Ceremony">
+        <h2>Graduation</h2>
+        <p>April 2025</p>
+      </div>
+    </div>
+
+  <!-- Last Monday Videos -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Last Monday</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/TaJkFKMuQgU?si=CGQiBwarvSiPWJxr" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Last Tuesday Videos -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Last Tuesday</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/0JYNgNiu39c?si=kY4bJkhb4-QmYJXI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Last Wednesday Videos -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Last Wednesday</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/2Ampx8Hg6lE?si=sSV3ZIz7rm-_gwbc" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Last Thursday Videos -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Last Thursday</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/BeJajvS5Q9w?si=IBtGnC_W-lJ8WgVe" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Last Friday Videos -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Last Friday</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/fF4cZjzgs98?si=LfOF1IgEjepJYH6V" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</main>
+
+  <!-- Jervey's Iphone Dump -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Jervey's Iphone Dump</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/Lr0z4eBQvMc?si=FNrW3Ir7FNs98Ppa" frameborder="0" allowfullscreen></iframe>
+    </div>
+   </div>
+  </main>
+
+  <!-- Jervey's Iphone Dump -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Jervey's Iphone Dump</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/Ft68x5HYAwQ?si=BAsyHrrNTVZY4rlc" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+   </main>
+
+  <!-- Jervey's Iphone Dump -->
+  <div class="student-card">
+    <div class="info">
+      <h2>Jervey's Iphone Dump</h2>
+      <p>Video Highlights</p>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/iCbg122Fb6U?si=tP0hLwoHivS8g588" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+   </main>
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024-2025 Made by Jervey P. Calusin. All rights reserved.</p>
+  </footer>
+</body>
+</html>
